@@ -16,11 +16,12 @@ function PersonModal(props){
 		modalSubmitButton = modalTitle;
 		handleSubmit = props.handleSubmitEdit;
 		if(props.show === true){
-			defaultIme = props.people[props.index].ime;
-			defaultPrezime = props.people[props.index].prezime;
-			defaultGodine = props.people[props.index].godine;
-			defaultVisina = props.people[props.index].visina;
-			defaultTezina = props.people[props.index].tezina;
+			console.log(props.id);
+			defaultIme = props.people[props.id].ime;
+			defaultPrezime = props.people[props.id].prezime;
+			defaultGodine = props.people[props.id].godine;
+			defaultVisina = props.people[props.id].visina;
+			defaultTezina = props.people[props.id].tezina;
 		}
 	}
 	function renderAdditionalInputs(){

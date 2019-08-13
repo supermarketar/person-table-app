@@ -6,7 +6,7 @@ export function closeModalAction(){
 		}
 	}
 };
-export function showModalActionAdd(i){
+export function showModalActionAdd(){
 	return {
 		type: "SHOW_MODAL",
 		payload: {
@@ -21,7 +21,7 @@ export function showModalActionEdit(i){
 		payload: {
 			isShown: true,
 			source: "edit-button",
-			index: i
+			id: i
 		}
 	}
 }

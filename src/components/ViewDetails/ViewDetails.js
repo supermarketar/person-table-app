@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom';
 import {editPersonAction} from '../../actions/personActions.js';
 
 class ViewDetails extends React.Component{
-	personIndex = this.props.match.params.id;
-	person = this.props.people[this.personIndex];
+	personId = this.props.match.params.id;
+	person = this.props.people[this.personId];
 
 	defaultIme = this.person.ime;
 	defaultPrezime = this.person.prezime;
@@ -19,6 +19,7 @@ class ViewDetails extends React.Component{
 
 	getPersonInputData = (event) => {
 		return {
+			id: this.personId,
 			ime: event.target.ime.value,
 			prezime: event.target.prezime.value,
 			godine: event.target.godine.value,
@@ -31,7 +32,7 @@ class ViewDetails extends React.Component{
 	}
 	handleSubmit = (event) => {
 		event.preventDefault();
-		this.props.editPerson(editPersonAction(this.getPersonInputData(event),Number(this.personIndex)));
+		this.props.editPerson(editPersonAction(this.getPersonInputData(event),Number(this.personId)));
 	}
 
 	render(){

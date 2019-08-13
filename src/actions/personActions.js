@@ -8,7 +8,7 @@ export function deletePersonAction(i){
 	return {
 		type: "DELETE_PERSON",
 		payload: {
-			index: i
+			id: i
 		}
 	}
 };
@@ -17,7 +17,7 @@ export function editPersonAction(personInputData,i){
 		type: "EDIT_PERSON",
 		payload: {
 			newPersonData: personInputData,
-			index: i
+			id: i
 		}
 	}
 };

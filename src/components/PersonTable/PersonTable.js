@@ -6,23 +6,25 @@ import {showModalActionEdit} from '../../actions/modalActions.js';
 import {createPersonAction,deletePersonAction,editPersonAction} from '../../actions/personActions.js';
 import {Link} from 'react-router-dom';
 
+let id = 0;
 function PersonTable(props){
 	
-	function deletePerson(i){
-		props.deletePerson(deletePersonAction(i));
+	function deletePerson(id){
+		props.deletePerson(deletePersonAction(id));
 	}
 	function getAdditionalPersonInputData(event){
 		if(props.modalSource === "add-button"){
 			return {
+				id: id++,
 				profesija: event.target.profesija.value,
 				skola: event.target.skola.value,
 				horoskop: event.target.horoskop.value
 			}
 		}
 	}
-
 	function getPersonInputData(event){
 		return {
+			id: props.id,
 			ime: event.target.ime.value,
 			prezime: event.target.prezime.value,
 			godine: event.target.godine.value,
@@ -38,7 +40,7 @@ function PersonTable(props){
 	}
 	function handleSubmitEdit(event){
 		event.preventDefault();
-		props.editPerson(editPersonAction(getPersonInputData(event),props.index));
+		props.editPerson(editPersonAction(getPersonInputData(event),props.id));
 		props.closeModal();
 	}
 
@@ -48,7 +50,7 @@ function PersonTable(props){
 				show={props.isShown}
 				onHide={props.closeModal}
 				modalSource={props.modalSource}
-				index={props.index}
+				id={props.id}
 				people={props.people}
 				handleSubmitAdd={handleSubmitAdd}
 				handleSubmitEdit={handleSubmitEdit}
@@ -72,9 +74,9 @@ function PersonTable(props){
 							<td>{person.visina}</td>
 							<td>{person.tezina}</td>
 							<td>
-								<Button variant="danger" onClick={() => deletePerson(index)}>Delete</Button>
-								<Button variant="info" onClick={() => props.showModal(showModalActionEdit(index))}>Edit</Button>
-								<Link to={"user/"+index} id="view-details-button">View details</Link>
+								<Button variant="danger" onClick={() => deletePerson(person.id)}>Delete</Button>
+								<Button variant="info" onClick={() => props.showModal(showModalActionEdit(person.id))}>Edit</Button>
+								<Link to={"user/"+person.id} id="view-details-button">View details</Link>
 							</td>
 							<td id="center-align">
 								<input type="checkbox" onChange={() => props.handleCheck(index)} />

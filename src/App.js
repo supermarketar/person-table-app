@@ -23,7 +23,7 @@ class App extends React.Component{
 				<PersonTable
 					isShown={this.props.modal.isShown}
 					modalSource={this.props.modal.source}
-					index={this.props.modal.index}
+					id={this.props.modal.id}
 					showModal={this.props.showModal}
 					closeModal={this.props.closeModal} 
 					people={this.props.people}

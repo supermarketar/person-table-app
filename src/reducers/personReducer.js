@@ -6,11 +6,11 @@ const personReducer = (state = people,action) => {
 			return [...state,action.payload]
 
 		case "DELETE_PERSON":
-			return state.filter((person,index) => index !== action.payload.index)
+			return state.filter((person) => person.id !== action.payload.id)
 
 		case "EDIT_PERSON":
-			return state.map((person,index) => {
-				if(index === action.payload.index)
+			return state.map((person) => {
+				if(person.id === action.payload.id)
 					return {...person.newPersonData,...action.payload.newPersonData}
 				else
 					return person
