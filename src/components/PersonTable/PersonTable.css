@@ -1,0 +1,21 @@
+table{
+	width: 50%;
+	margin: 0 25%;
+}
+table,th,tr,td{
+	border: solid black 1px;
+}
+#center-align{
+	text-align: center;
+}
+#view-details-button{
+	position: relative;
+	left: 30px;
+	top: 3px;
+	padding: 6px 12px;
+	background-color: #5a6268;
+	color: #fff;
+	line-height: 1.5;
+	border-radius: 6px;
+	text-decoration: none;
+}
